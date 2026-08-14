@@ -95,24 +95,27 @@
         <a href="assets/Jooho_Kim_CV.pdf?v=2026-08" class="hover:text-accent">CV</a>
       </nav>
 
-      <div class="relative sm:hidden">
-        <button id="menu-btn" type="button" aria-expanded="false" aria-controls="menu" class="flex flex-col gap-1.5 p-1.5">
-          <span class="sr-only">Open menu</span>
-          <span class="block h-0.5 w-6 bg-ink"></span>
-          <span class="block h-0.5 w-6 bg-ink"></span>
-          <span class="block h-0.5 w-6 bg-ink"></span>
-        </button>
-        <nav id="menu" hidden aria-label="Section navigation"
-             class="absolute right-0 top-full mt-2 flex w-48 flex-col gap-1 rounded-lg border border-rule bg-white p-2 text-sm shadow-lg">
-          <a href="#research" class="rounded px-2 py-1.5 hover:bg-neutral-50">Research</a>
-          <a href="#publications" class="rounded px-2 py-1.5 hover:bg-neutral-50">Publications</a>
-          <a href="#talks" class="rounded px-2 py-1.5 hover:bg-neutral-50">Talks</a>
-          <a href="#honors" class="rounded px-2 py-1.5 hover:bg-neutral-50">Honors</a>
-          <a href="#teaching" class="rounded px-2 py-1.5 hover:bg-neutral-50">Teaching</a>
-          <a href="assets/Jooho_Kim_CV.pdf?v=2026-08" class="rounded px-2 py-1.5 hover:bg-neutral-50">CV</a>
-        </nav>
-      </div>
+      <button id="menu-btn" type="button" aria-expanded="false" aria-controls="menu"
+              class="flex flex-col gap-1.5 p-1.5 sm:hidden">
+        <span class="sr-only">Open menu</span>
+        <span class="block h-0.5 w-6 bg-ink"></span>
+        <span class="block h-0.5 w-6 bg-ink"></span>
+        <span class="block h-0.5 w-6 bg-ink"></span>
+      </button>
     </div>
+
+    <!-- Mobile menu: lives in normal flow, so opening it pushes the page down instead of covering it -->
+    <nav id="menu" hidden aria-label="Section navigation"
+         class="sm:hidden border-t border-rule bg-paper">
+      <div class="mx-auto max-w-3xl px-5 py-2 flex flex-col text-sm">
+        <a href="#research" class="rounded px-2 py-2 hover:bg-neutral-50">Research</a>
+        <a href="#publications" class="rounded px-2 py-2 hover:bg-neutral-50">Publications</a>
+        <a href="#talks" class="rounded px-2 py-2 hover:bg-neutral-50">Talks</a>
+        <a href="#honors" class="rounded px-2 py-2 hover:bg-neutral-50">Honors</a>
+        <a href="#teaching" class="rounded px-2 py-2 hover:bg-neutral-50">Teaching</a>
+        <a href="assets/Jooho_Kim_CV.pdf?v=2026-08" class="rounded px-2 py-2 hover:bg-neutral-50">CV</a>
+      </div>
+    </nav>
   </header>
 
   <main id="main" class="mx-auto max-w-3xl px-5">
@@ -226,7 +229,7 @@
             </p>
             <a href="https://arxiv.org/abs/2511.14692" target="_blank" rel="noopener"
                aria-label="Paper"
-               class="mt-4 block max-w-sm rounded-lg border border-rule bg-white p-3">
+               class="mt-4 block max-w-xs rounded-lg border border-rule bg-white p-3">
               <img src="assets/ISS_figure.jpg" alt="" class="w-full rounded" />
             </a>
           </div>
@@ -247,8 +250,8 @@
           </p>
           <p class="mt-1 text-sm text-muted">
             2025 Winter Conference of the Korean Statistical Society, Dec. 2025.
-            <span class="text-ink">Best Student Oral Presentation Award.</span>
           </p>
+          <p class="text-sm font-medium text-ink">Best Student Oral Presentation Award</p>
           <p class="mt-1.5 text-sm">
             <a href="assets/KSS2025_JK.pdf" target="_blank" rel="noopener" class="text-accent hover:underline underline-offset-4">Slides</a>
           </p>
@@ -271,30 +274,36 @@
       <p class="eyebrow text-muted">Honors</p>
       <h2 class="mt-2 font-display text-2xl font-semibold tracking-tight">Honors and awards</h2>
 
-      <ul class="mt-6 space-y-3 text-[15px] leading-7">
-        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
-          <span>Best Student Oral Presentation Award, Korean Statistical Society</span>
-          <span class="text-sm text-muted sm:text-right">Dec. 2025</span>
+      <ul class="mt-6 space-y-5">
+        <li>
+          <p class="text-[15px] font-medium leading-6">Best Student Oral Presentation Award</p>
+          <p class="text-[15px] leading-6 text-neutral-700">Korean Statistical Society</p>
+          <p class="text-sm text-muted">Dec. 2025</p>
         </li>
-        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
-          <span>Fellowship for Fundamental Academic Fields, Seoul National University</span>
-          <span class="text-sm text-muted sm:text-right">May 2024, Feb. 2025</span>
+        <li>
+          <p class="text-[15px] font-medium leading-6">Fellowship for Fundamental Academic Fields</p>
+          <p class="text-[15px] leading-6 text-neutral-700">Seoul National University</p>
+          <p class="text-sm text-muted">May 2024, Feb. 2025</p>
         </li>
-        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
-          <span>Graduate Research Fellowship in Science and Engineering, National Research Foundation of Korea</span>
-          <span class="text-sm text-muted sm:text-right">2024-2025</span>
+        <li>
+          <p class="text-[15px] font-medium leading-6">Graduate Research Fellowship in Science and Engineering</p>
+          <p class="text-[15px] leading-6 text-neutral-700">National Research Foundation of Korea</p>
+          <p class="text-sm text-muted">2024-2025</p>
         </li>
-        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
-          <span>Special Scholarship, Korea University</span>
-          <span class="text-sm text-muted sm:text-right">Sep. 2022, Mar. 2023</span>
+        <li>
+          <p class="text-[15px] font-medium leading-6">Special Scholarship</p>
+          <p class="text-[15px] leading-6 text-neutral-700">Korea University</p>
+          <p class="text-sm text-muted">Sep. 2022, Mar. 2023</p>
         </li>
-        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
-          <span>Semester High Honors, Korea University</span>
-          <span class="text-sm text-muted sm:text-right">Sep. 2018, Mar. 2022, Mar. 2023</span>
+        <li>
+          <p class="text-[15px] font-medium leading-6">Semester High Honors</p>
+          <p class="text-[15px] leading-6 text-neutral-700">Korea University</p>
+          <p class="text-sm text-muted">Sep. 2018, Mar. 2022, Mar. 2023</p>
         </li>
-        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
-          <span>Agricultural Economics Alumni Scholarship, Korea University</span>
-          <span class="text-sm text-muted sm:text-right">Mar. 2022</span>
+        <li>
+          <p class="text-[15px] font-medium leading-6">Agricultural Economics Alumni Scholarship</p>
+          <p class="text-[15px] leading-6 text-neutral-700">Korea University</p>
+          <p class="text-sm text-muted">Mar. 2022</p>
         </li>
       </ul>
     </section>
@@ -305,30 +314,30 @@
       <h2 class="mt-2 font-display text-2xl font-semibold tracking-tight">Teaching</h2>
 
       <p class="mt-5 text-sm text-muted">Teaching assistant, University of Minnesota-Twin Cities</p>
-      <ul class="mt-4 space-y-3 text-[15px] leading-7">
-        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
-          <span>Introduction to Probability and Statistics (STAT 3021)</span>
-          <span class="text-sm text-muted sm:text-right">Fall 2026</span>
+      <ul class="mt-4 space-y-4">
+        <li>
+          <p class="text-[15px] leading-6">Introduction to Probability and Statistics (STAT 3021)</p>
+          <p class="text-sm text-muted">Fall 2026</p>
         </li>
       </ul>
 
       <p class="mt-8 text-sm text-muted">Teaching assistant, Seoul National University</p>
-      <ul class="mt-4 space-y-3 text-[15px] leading-7">
-        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
-          <span>Survival Data Analysis and Lab (326.412)</span>
-          <span class="text-sm text-muted sm:text-right">Fall 2025</span>
+      <ul class="mt-4 space-y-4">
+        <li>
+          <p class="text-[15px] leading-6">Survival Data Analysis and Lab (326.412)</p>
+          <p class="text-sm text-muted">Fall 2025</p>
         </li>
-        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
-          <span>Selected Topics Seminar (991.101 006)</span>
-          <span class="text-sm text-muted sm:text-right">Spring 2025</span>
+        <li>
+          <p class="text-[15px] leading-6">Selected Topics Seminar (991.101 006)</p>
+          <p class="text-sm text-muted">Spring 2025</p>
         </li>
-        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
-          <span>Mathematical Statistics 2 (M1399.000900)</span>
-          <span class="text-sm text-muted sm:text-right">Fall 2024</span>
+        <li>
+          <p class="text-[15px] leading-6">Mathematical Statistics 2 (M1399.000900)</p>
+          <p class="text-sm text-muted">Fall 2024</p>
         </li>
-        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
-          <span>Statistics Lab (033.020 002)</span>
-          <span class="text-sm text-muted sm:text-right">Spring 2024</span>
+        <li>
+          <p class="text-[15px] leading-6">Statistics Lab (033.020 002)</p>
+          <p class="text-sm text-muted">Spring 2024</p>
         </li>
       </ul>
     </section>
@@ -352,9 +361,8 @@
         btn.setAttribute('aria-expanded', String(open));
       }
       btn.addEventListener('click', function (e) { e.stopPropagation(); setOpen(menu.hidden); });
-      menu.addEventListener('click', function () { setOpen(false); });
-      document.addEventListener('click', function (e) {
-        if (!menu.hidden && !menu.contains(e.target)) setOpen(false);
+      menu.addEventListener('click', function (e) {
+        if (e.target.closest('a')) setOpen(false);
       });
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && !menu.hidden) { setOpen(false); btn.focus(); }
