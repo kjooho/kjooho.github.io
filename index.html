@@ -3,207 +3,356 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jooho Kim — Academic Website</title>
+  <title>Jooho Kim</title>
+  <meta name="description" content="Jooho Kim is a first-year PhD student in Statistics at the University of Minnesota-Twin Cities, working on statistical methodology for incomplete data and complex sampling designs." />
   <link rel="canonical" href="https://kjooho.github.io/" />
 
   <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Jooho Kim — Academic Website" />
-  <meta property="og:description" content="Statistics graduate student" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://kjooho.github.io/assets/profile.jpg" />
+  <meta property="og:title" content="Jooho Kim" />
+  <meta property="og:description" content="PhD student in Statistics, University of Minnesota-Twin Cities. Statistical methodology for incomplete data and complex sampling designs." />
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://kjooho.github.io/" />
+  <meta property="og:image" content="https://kjooho.github.io/assets/profile.jpeg" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Tailwind (CDN) -->
+  <link rel="icon" type="image/png" href="assets/favicon_JK.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = { theme: { extend: {} } };
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Newsreader', 'Georgia', 'serif'],
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            paper: '#FDFDFC',
+            ink: '#171717',
+            muted: '#5A5F66',
+            rule: '#E4E6E3',
+            accent: '#23508A'
+          }
+        }
+      }
+    };
   </script>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/favicon_JK.png">
-
   <style>
-    /* Offset for anchor scroll under sticky header */
-    :target { scroll-margin-top: 96px; }
+    :target { scroll-margin-top: 88px; }
+    .eyebrow { letter-spacing: .14em; text-transform: uppercase; font-size: .72rem; }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid #23508A; outline-offset: 3px; border-radius: 2px;
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
-  
-</head>
-<body class="bg-white text-neutral-900 antialiased">
-  <header class="sticky top-0 z-50 border-b border-neutral-200/70 bg-white/90 backdrop-blur">
-    <div class="mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
-      <a href="#home" class="font-semibold tracking-tight">Jooho Kim</a>
-      <div class="relative">
-        <button id="menu-btn" class="flex flex-col space-y-1.5 ml-4">
-          <span class="block w-6 h-0.5 bg-black"></span>
-          <span class="block w-6 h-0.5 bg-black"></span>
-          <span class="block w-6 h-0.5 bg-black"></span>
-        </button>
 
-        <nav id="menu" class="hidden absolute top-full right-0 mt-2 flex flex-col bg-white border rounded-xl shadow-md p-2 space-y-2 z-50">
-          <a href="#cv" class="hover:underline underline-offset-4">CV</a>
-          <a href="#recent" class="hover:underline underline-offset-4">Recent Works</a>
-          <a href="#teaching" class="hover:underline underline-offset-4">Teaching</a>
-          <a href="https://github.com/kjooho" target="_blank" rel="noopener" class="hover:underline underline-offset-4">GitHub</a>
-          <a href="https://www.linkedin.com/in/jooho-kim-757899245/" target="_blank" rel="noopener" class="hover:underline underline-offset-4">LinkedIn</a>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jooho Kim",
+    "url": "https://kjooho.github.io/",
+    "affiliation": {
+      "@type": "CollegeOrUniversity",
+      "name": "University of Minnesota-Twin Cities"
+    },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Seoul National University" },
+      { "@type": "CollegeOrUniversity", "name": "Korea University" }
+    ],
+    "sameAs": [
+      "https://github.com/kjooho",
+      "https://www.linkedin.com/in/jooho-kim-757899245/"
+    ]
+  }
+  </script>
+</head>
+
+<body class="bg-paper text-ink font-sans antialiased">
+
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-3 focus:rounded focus:bg-white focus:px-3 focus:py-2 focus:text-sm focus:shadow">Skip to content</a>
+
+  <header class="sticky top-0 z-50 border-b border-rule bg-paper/90 backdrop-blur">
+    <div class="mx-auto max-w-3xl px-5 py-3.5 flex items-center justify-between">
+      <a href="#top" class="font-display text-lg font-medium tracking-tight">Jooho Kim</a>
+
+      <nav aria-label="Section navigation" class="hidden sm:flex items-center gap-6 text-sm text-muted">
+        <a href="#research" class="hover:text-accent">Research</a>
+        <a href="#publications" class="hover:text-accent">Publications</a>
+        <a href="#talks" class="hover:text-accent">Talks</a>
+        <a href="#teaching" class="hover:text-accent">Teaching</a>
+        <!-- CV cache-busting: keep the filename fixed, bump ?v= each time you replace the PDF -->
+        <a href="assets/Jooho_Kim_CV.pdf?v=2026-08" class="hover:text-accent">CV</a>
+      </nav>
+
+      <div class="relative sm:hidden">
+        <button id="menu-btn" type="button" aria-expanded="false" aria-controls="menu" class="flex flex-col gap-1.5 p-1.5">
+          <span class="sr-only">Open menu</span>
+          <span class="block h-0.5 w-6 bg-ink"></span>
+          <span class="block h-0.5 w-6 bg-ink"></span>
+          <span class="block h-0.5 w-6 bg-ink"></span>
+        </button>
+        <nav id="menu" hidden aria-label="Section navigation"
+             class="absolute right-0 top-full mt-2 flex w-48 flex-col gap-1 rounded-lg border border-rule bg-white p-2 text-sm shadow-lg">
+          <a href="#research" class="rounded px-2 py-1.5 hover:bg-neutral-50">Research</a>
+          <a href="#publications" class="rounded px-2 py-1.5 hover:bg-neutral-50">Publications</a>
+          <a href="#talks" class="rounded px-2 py-1.5 hover:bg-neutral-50">Talks</a>
+          <a href="#honors" class="rounded px-2 py-1.5 hover:bg-neutral-50">Honors</a>
+          <a href="#teaching" class="rounded px-2 py-1.5 hover:bg-neutral-50">Teaching</a>
+          <a href="assets/Jooho_Kim_CV.pdf?v=2026-08" class="rounded px-2 py-1.5 hover:bg-neutral-50">CV</a>
         </nav>
       </div>
     </div>
   </header>
 
-  <main id="home" class="mx-auto max-w-5xl px-4">
-    <section class="relative py-12 sm:py-16">
-      <div class="absolute inset-0 -z-10 bg-center bg-cover opacity-50" style="background-image:url('assets/background.jpg');"></div>
+  <main id="main" class="mx-auto max-w-3xl px-5">
 
-      <div class="grid gap-10 sm:grid-cols-[220px_1fr] items-center">
-        <div class="flex justify-center sm:justify-start">
-          <!-- GitHub profile avatar (auto-updates when you change it on GitHub) -->
-          <img src="assets/profile.jpeg" alt="Portrait of Jooho Kim" class="h-60 w-60 rounded-2xl object-cover ring-1 ring-neutral-200"/>
-        </div>
+    <!-- ===== Hero ===== -->
+    <section id="top" class="py-12 sm:py-16">
+      <div class="grid gap-8 sm:grid-cols-[180px_1fr] sm:items-start">
+        <img src="assets/profile.jpeg" alt="Portrait of Jooho Kim"
+             class="h-44 w-44 rounded-xl object-cover ring-1 ring-rule justify-self-center sm:justify-self-start" />
         <div>
-          <h1 class="text-3xl sm:text-4xl font-bold tracking-tight">Jooho Kim</h1>
-          <p class="mt-2 text-base/relaxed text-neutral-700">
-            Hi, welcome to my website. I am a master’s student in the 
-            <a href="https://stat.snu.ac.kr/en/" target="_blank" class="text-blue-600 underline">Department of Statistics at Seoul National University</a>, 
-            advised by Professor <a href="https://sites.google.com/view/yeieunshin" target="_blank" class="text-blue-600 underline">Yei Eun Shin</a>. 
-            My research focuses on multiple imputation for missing covariates in survival analysis under two-phase sampling designs, 
-            such as case-cohort and nested case-control studies.
-            My master’s research is supported by a graduate fellowship from the National Research Foundation of Korea.
-            Previously, I received my Bachelor’s degree in Food and Resource Economics and Statistics from 
-            <a href="https://www.korea.edu/sites/en/index.do" target="_blank" class="text-blue-600 underline">Korea University</a>.
+          <h1 class="font-display text-4xl font-semibold tracking-tight">Jooho Kim</h1>
+          <p class="mt-1.5 text-sm text-muted">
+            PhD Student, School of Statistics, University of Minnesota-Twin Cities
+            <!-- If you are in Biostatistics, use:
+                 Division of Biostatistics and Health Data Science, University of Minnesota-Twin Cities -->
           </p>
-          <div class="mt-4 flex flex-wrap gap-3">
-            <a href="cv(may.08.26).pdf" class="rounded-xl border px-4 py-2 text-sm font-medium border-neutral-300 hover:bg-neutral-50" download>Download CV (PDF)</a>
-            <a href="#recent" class="rounded-xl border px-4 py-2 text-sm font-medium border-neutral-300 hover:bg-neutral-50">Recent Works</a>
-            <a href="#honors and awards" class="rounded-xl border px-4 py-2 text-sm font-medium border-neutral-300 hover:bg-neutral-50">Honors and Awards</a>
-            <a href="#teaching" class="rounded-xl border px-4 py-2 text-sm font-medium border-neutral-300 hover:bg-neutral-50">Teaching</a>
-            <!--a href="mailto:youremail@snu.ac.kr" class="rounded-xl border px-4 py-2 text-sm font-medium border-neutral-300 hover:bg-neutral-50">Email</a-->
-          </div>
+
+          <p class="mt-5 text-[15px] leading-7 text-neutral-800">
+            I am a first-year PhD student in the
+            <a href="https://cla.umn.edu/statistics" target="_blank" rel="noopener" class="text-accent underline decoration-rule underline-offset-4 hover:decoration-accent">School of Statistics</a>
+            at the University of Minnesota-Twin Cities. I develop statistical methodology for settings
+            where data are incomplete or collected under complex sampling designs, with an emphasis on
+            estimators that are both computationally scalable and statistically efficient.
+          </p>
+          <p class="mt-3 text-[15px] leading-7 text-neutral-800">
+            I received my M.S. in Statistics from
+            <a href="https://stat.snu.ac.kr/en/" target="_blank" rel="noopener" class="text-accent underline decoration-rule underline-offset-4 hover:decoration-accent">Seoul National University</a>,
+            advised by Professor
+            <a href="https://sites.google.com/view/yeieunshin" target="_blank" rel="noopener" class="text-accent underline decoration-rule underline-offset-4 hover:decoration-accent">Yei Eun Shin</a>,
+            where my research was supported by a graduate fellowship from the National Research
+            Foundation of Korea. Before that I studied at
+            <a href="https://www.korea.edu/sites/en/index.do" target="_blank" rel="noopener" class="text-accent underline decoration-rule underline-offset-4 hover:decoration-accent">Korea University</a>,
+            double majoring in Food and Resource Economics and in Statistics.
+          </p>
+
+          <ul class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted">
+            <!-- Address is assembled by JS so that simple scrapers of the static HTML do not pick it up.
+                 Edit the two parts in the script at the bottom of this file. -->
+            <li id="email-slot">jooho.kim [at] umn.edu</li>
+            <li><a href="assets/Jooho_Kim_CV.pdf?v=2026-08" class="hover:text-accent">CV</a></li>
+            <li><a href="https://github.com/kjooho" target="_blank" rel="noopener" class="hover:text-accent">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/jooho-kim-757899245/" target="_blank" rel="noopener" class="hover:text-accent">LinkedIn</a></li>
+          </ul>
         </div>
       </div>
     </section>
 
+    <!-- ===== Research ===== -->
+    <section id="research" class="border-t border-rule py-11">
+      <p class="eyebrow text-muted">Research</p>
+      <h2 class="mt-2 font-display text-2xl font-semibold tracking-tight">Research interests</h2>
 
-    <section id="research" class="py-12 border-t border-neutral-200/70">
-      <h2 class="text-2xl font-semibold tracking-tight">Research Interests</h2>
-      <p class="mt-1">My primary methodological interests are in <strong>statistical machine learning</strong>, <strong>optimization</strong>, 
-        <strong>high-dimensional and multivariate statistics</strong>, and <strong>missing data</strong>.</p>
+      <p class="mt-4 text-[15px] leading-7 text-neutral-800">
+        My work so far has been on inference from data that are incomplete by design. In my master's
+        research I showed that two subsamples drawn under different sampling schemes can be analyzed
+        within a single framework once their weights are calibrated to a common target, which recovers
+        efficiency that is otherwise lost when covariates are measured on only part of the cohort.
+      </p>
+      <p class="mt-4 text-[15px] leading-7 text-neutral-800">
+        What interests me about that problem is more general than missing data. I would like to
+        understand how statistical information can be split, borrowed across sources, and recombined
+        without invalidating the inference that follows, and what optimization machinery makes such
+        estimators practical at scale. I am early in my PhD and still exploring which of these
+        directions to pursue.
+      </p>
+
+      <!-- Optional. Delete this line if you would rather not commit to keywords yet. -->
+      <p class="mt-4 text-sm text-muted">
+        Broadly: missing and incomplete data &middot; data integration &middot;
+        statistical machine learning &middot; optimization
+      </p>
     </section>
 
-    <!-- CV section (embed removed for compactness) -->
-    <section id="cv" class="py-10 border-t border-neutral-200/70">
-      <div class="flex items-center justify-between">
-        <h2 class="text-2xl font-semibold tracking-tight">CV</h2>
-        <!--a href="cv(may.08.26).pdf" class="text-sm underline underline-offset-4" download>Download PDF</a-->
-      </div>
-      <object data="cv(may.08.26).pdf" type="application/pdf" class="w-full h-64 rounded-xl mt-4">
-        <p>View my <a class="underline" href="cv(may.08.26).pdf">CV (PDF)</a>.</p>
-      </object>
-    </section>
+    <!-- ===== Publications ===== -->
+    <section id="publications" class="border-t border-rule py-11">
+      <p class="eyebrow text-muted">Papers</p>
+      <h2 class="mt-2 font-display text-2xl font-semibold tracking-tight">Publications and preprints</h2>
 
-    <!-- Publications section (commented out until available) -->
-    <!--
-    <section id="publications" class="py-12 border-t border-neutral-200/70">
-      <h2 class="text-2xl font-semibold tracking-tight">Publications & Preprints</h2>
-      <p class="mt-2 text-sm text-neutral-600">Author order shown as in manuscript. ✱ indicates corresponding author.</p>
-      ...
-    </section>
-    -->
-
-    <!-- Recent Works section -->
-    <section id="recent" class="py-12 border-t border-neutral-200/70">
-      <h2 class="text-2xl font-semibold tracking-tight">Recent Works</h2>
-      <div class="mt-6 grid sm:grid-cols-2 gap-8">
-        <!-- Work 1 -->
-        <article class="rounded-2xl border border-neutral-200 p-4 bg-white/80">
-          <img src="assets/figure1.png" alt="Preprint" class="w-full h-auto object-contain rounded-xl mb-4"/>
-          <h3 class="text-lg font-medium">Preprint</h3>
-          <p class="mt-2 text-sm text-neutral-600">
-            Kim and Shin (2025) Scalable and Efficient Multiple Imputation for Case-Cohort Studies via Influence Function-Based Supersampling.<br/>
-            arXiv:2511.14692.
-          </p>
-          <div class="mt-2 text-sm">
-            <a href="https://arxiv.org/abs/2511.14692" target="_blank" class="mt-2 text-blue-600 hover:underline"><strong>[paper]</strong></a>
-            <a href="https://github.com/kjooho/ISS_MI" target="_blank" class="text-blue-600 hover:underline"><strong>[software]</strong></a>
+      <ol class="mt-6 space-y-8">
+        <li class="grid gap-5 sm:grid-cols-[190px_1fr] sm:items-start">
+          <a href="https://arxiv.org/abs/2511.14692" target="_blank" rel="noopener"
+             class="block rounded-lg border border-rule bg-white p-2">
+            <img src="assets/figure1.png"
+                 alt="Schematic of influence function-based supersampling for case-cohort studies"
+                 class="w-full rounded object-contain" />
+          </a>
+          <div>
+            <p class="text-[15px] leading-7">
+              <strong class="font-medium">Kim, J.</strong> and Shin, Y. E. (2025).
+              Scalable and efficient multiple imputation for case-cohort studies via influence
+              function-based supersampling.
+              <span class="text-muted">arXiv:2511.14692.</span>
+            </p>
+            <p class="mt-1 text-sm font-medium text-accent">Revision invited, <em>Biometrics</em>.</p>
+            <p class="mt-2 text-sm leading-6 text-muted">
+              Calibrating the weights of two subsamples drawn under different sampling designs to a
+              common target lets them be analyzed together. This allows an influence function-based
+              supersample to be combined with the original case-cohort subsample, substantially
+              improving the relative efficiency of the resulting estimator.
+            </p>
+            <p class="mt-2 text-sm">
+              <a href="https://arxiv.org/abs/2511.14692" target="_blank" rel="noopener" class="text-accent hover:underline underline-offset-4">Paper</a>
+              <span class="text-rule">&nbsp;/&nbsp;</span>
+              <a href="https://github.com/kjooho/ISS_MI" target="_blank" rel="noopener" class="text-accent hover:underline underline-offset-4">Code</a>
+            </p>
           </div>
-        </article>
-
-
-        <!-- Work 2 -->
-        <article class="rounded-2xl border border-neutral-200 p-4 bg-white/80">
-          <img src="assets/kss_logo2.png" alt="KSS Logo" class="w-full h-48 object-cover rounded-xl mb-4"/>
-          <h3 class="text-lg font-medium">Presentation at the 2025 Winter Conference of the Korean Statistical Society</h3>
-          <p class="mt-2 text-sm text-neutral-600">
-            "Scalable and Efficient Multiple Imputation for Case-Cohort Studies via Influence Function-Based Supersampling"<br>
-          </p>
-          <p class="mt-2 text-sm font-semibold text-neutral-600">
-            Recipient of the Graduate Student Paper Award
-          </p>
-          <a href="assets/KSS2025_JK.pdf" target="_blank" class="block mt-2 text-sm text-blue-600 hover:underline">
-            <strong>[slides]</strong>
-          </a>
-        </article>
-        
-        <!-- Work 3 -->
-        <article class="rounded-2xl border border-neutral-200 p-4 bg-white/80">
-          <img src="assets/talk.jpg" alt="Talk image" class="w-full h-48 object-cover rounded-xl mb-4"/>
-          <h3 class="text-lg font-medium">Presentation at the 2nd Symposium on Causal Inference</h3>
-          <p class="mt-2 text-sm text-neutral-600">
-            "Multiple imputation for incomplete survival data with missing covariates: Toward valid causal inference"
-          </p>
-          <a href="assets/CI_slides.pdf" target="_blank" class="block mt-2 text-sm text-blue-600 hover:underline">
-            <strong>[slides]</strong>
-          </a>
-        </article>
-      </div>
+        </li>
+      </ol>
     </section>
 
-    <!-- Honors and Awards -->
-    <section id="honors and awards" class="py-12 border-t border-neutral-200/70">
-      <h2 class="text-2xl font-semibold tracking-tight">Honors and Awards</h2>
-      <div class="mx-auto max-w-5xl px-4">
-        <ul class="list-disc list-inside mt-4 space-y-2 text-neutral-700">
-          <li><strong>Graduate Student Paper Award</strong>, Korean Statistical Society, Dec. 2025</li>
-          <li><strong>Fellowship for Fundamental Academic Fields</strong>, Seoul National University, May 2024; Feb. 2025</li>
-          <li><strong>Graduate Research Fellowship in Science and Engineering</strong>, National Research Foundation of Korea, Sep. 2024 - Aug. 2025</li>
-          <li><strong>Special Scholarship</strong>, Korea University, Sep. 2022; Mar. 2023</li>
-          <li><strong>Semester High Honors</strong>, Korea University, Sep. 2018; Mar. 2022; Mar. 2023</li>
-          <li><strong>Agricultural Economics Alumni Scholarship</strong>, Department of Food and Resource Economics, Korea University, Mar. 2022</li>
-        </ul>
-      </div>
+    <!-- ===== Talks ===== -->
+    <section id="talks" class="border-t border-rule py-11">
+      <p class="eyebrow text-muted">Talks</p>
+      <h2 class="mt-2 font-display text-2xl font-semibold tracking-tight">Selected presentations</h2>
+
+      <ul class="mt-6 space-y-6">
+        <li>
+          <p class="text-[15px] leading-7">
+            Scalable and efficient multiple imputation for case-cohort studies via influence
+            function-based supersampling.
+          </p>
+          <p class="mt-1 text-sm text-muted">
+            2025 Winter Conference of the Korean Statistical Society, Dec. 2025.
+            <span class="text-ink">Graduate Student Paper Award.</span>
+          </p>
+          <p class="mt-1.5 text-sm">
+            <a href="assets/KSS2025_JK.pdf" target="_blank" rel="noopener" class="text-accent hover:underline underline-offset-4">Slides</a>
+          </p>
+        </li>
+        <li>
+          <p class="text-[15px] leading-7">
+            Multiple imputation for incomplete survival data with missing covariates: toward valid
+            causal inference.
+          </p>
+          <p class="mt-1 text-sm text-muted">2nd Symposium on Causal Inference.</p>
+          <p class="mt-1.5 text-sm">
+            <a href="assets/CI_slides.pdf" target="_blank" rel="noopener" class="text-accent hover:underline underline-offset-4">Slides</a>
+          </p>
+        </li>
+      </ul>
     </section>
 
-    <!-- Teaching section -->
-    <section id="teaching" class="py-12 border-t border-neutral-200/70">
-      <h2 class="text-2xl font-semibold tracking-tight">Teaching</h2>
-      <div class="mx-auto max-w-5xl px-4">
-        <h3 class="mt-2 text-lg font-medium">Teaching Assistant at Seoul National University</h3>
-        <ul class="list-disc list-inside mt-4 space-y-2 text-neutral-700">
-          <li>Fall 2025: Survival Data Analysis and Lab</li>
-          <li>Spring 2025: Selected Topics Seminar</li>
-          <li>Fall 2024: Mathematical Statistics 2</li>
-          <li>Spring 2024: Statistics Lab</li>
-        </ul>
-      </div>
+    <!-- ===== Honors ===== -->
+    <section id="honors" class="border-t border-rule py-11">
+      <p class="eyebrow text-muted">Honors</p>
+      <h2 class="mt-2 font-display text-2xl font-semibold tracking-tight">Honors and awards</h2>
+
+      <ul class="mt-6 space-y-3 text-[15px] leading-7">
+        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
+          <span>Graduate Student Paper Award, Korean Statistical Society</span>
+          <span class="text-sm text-muted sm:text-right">Dec. 2025</span>
+        </li>
+        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
+          <span>Fellowship for Fundamental Academic Fields, Seoul National University</span>
+          <span class="text-sm text-muted sm:text-right">May 2024, Feb. 2025</span>
+        </li>
+        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
+          <span>Graduate Research Fellowship in Science and Engineering, National Research Foundation of Korea</span>
+          <span class="text-sm text-muted sm:text-right">2024-2025</span>
+        </li>
+        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
+          <span>Special Scholarship, Korea University</span>
+          <span class="text-sm text-muted sm:text-right">Sep. 2022, Mar. 2023</span>
+        </li>
+        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
+          <span>Semester High Honors, Korea University</span>
+          <span class="text-sm text-muted sm:text-right">Sep. 2018, Mar. 2022, Mar. 2023</span>
+        </li>
+        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
+          <span>Agricultural Economics Alumni Scholarship, Korea University</span>
+          <span class="text-sm text-muted sm:text-right">Mar. 2022</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== Teaching ===== -->
+    <section id="teaching" class="border-t border-rule py-11">
+      <p class="eyebrow text-muted">Teaching</p>
+      <h2 class="mt-2 font-display text-2xl font-semibold tracking-tight">Teaching</h2>
+
+      <p class="mt-4 text-sm text-muted">Teaching assistant, Seoul National University</p>
+      <ul class="mt-4 space-y-3 text-[15px] leading-7">
+        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
+          <span>Survival Data Analysis and Lab</span>
+          <span class="text-sm text-muted sm:text-right">Fall 2025</span>
+        </li>
+        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
+          <span>Selected Topics Seminar</span>
+          <span class="text-sm text-muted sm:text-right">Spring 2025</span>
+        </li>
+        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
+          <span>Mathematical Statistics 2</span>
+          <span class="text-sm text-muted sm:text-right">Fall 2024</span>
+        </li>
+        <li class="grid gap-x-6 sm:grid-cols-[1fr_auto]">
+          <span>Statistics Lab</span>
+          <span class="text-sm text-muted sm:text-right">Spring 2024</span>
+        </li>
+      </ul>
     </section>
   </main>
-  
-  <footer class="mt-12 border-t border-neutral-200/70">
-    <div class="mx-auto max-w-5xl px-4 py-8 text-sm text-neutral-600">
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <p>Last updated: <span id="lastUpdated"></span></p>
-      </div>
+
+  <footer class="border-t border-rule">
+    <div class="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-3 px-5 py-8 text-sm text-muted">
+      <p>&copy; <span id="year"></span> Jooho Kim</p>
+      <p>Last updated: August 2026</p>
     </div>
   </footer>
 
   <script>
-     document.getElementById("menu-btn").addEventListener("click", function() {
-      const menu = document.getElementById("menu");
-      menu.classList.toggle("hidden");
-    });
-    document.getElementById('lastUpdated').textContent = 
-      new Date(document.lastModified).toLocaleDateString("en-US", {
-        year: "numeric", month: "long"
+    (function () {
+      /* ---- Mobile menu ---- */
+      var btn = document.getElementById('menu-btn');
+      var menu = document.getElementById('menu');
+
+      function setOpen(open) {
+        menu.hidden = !open;
+        btn.setAttribute('aria-expanded', String(open));
+      }
+      btn.addEventListener('click', function (e) { e.stopPropagation(); setOpen(menu.hidden); });
+      menu.addEventListener('click', function () { setOpen(false); });
+      document.addEventListener('click', function (e) {
+        if (!menu.hidden && !menu.contains(e.target)) setOpen(false);
       });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !menu.hidden) { setOpen(false); btn.focus(); }
+      });
+
+      /* ---- Email: edit these two parts only ---- */
+      var localPart = 'jooho.kim';   // <- your UMN username
+      var domain    = 'umn.edu';     // <- your UMN domain
+
+      var slot = document.getElementById('email-slot');
+      if (slot) {
+        var a = document.createElement('a');
+        a.href = 'mailto:' + localPart + '\u0040' + domain;
+        a.textContent = localPart + '@' + domain;
+        a.className = 'hover:text-accent';
+        slot.textContent = '';
+        slot.appendChild(a);
+      }
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
   </script>
 </body>
 </html>
