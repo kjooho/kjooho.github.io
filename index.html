@@ -46,6 +46,13 @@
   <style>
     :target { scroll-margin-top: 88px; }
     .eyebrow { letter-spacing: .14em; text-transform: uppercase; font-size: .72rem; }
+    /* Tailwind display utilities can out-rank the [hidden] attribute, so state it explicitly. */
+    #menu[hidden] { display: none !important; }
+    .subhead { letter-spacing: .08em; text-transform: uppercase; font-size: .75rem; font-weight: 600; }
+    #menu-btn span[aria-hidden] { transition: transform .18s ease, opacity .18s ease; }
+    #menu-btn.is-open span[aria-hidden]:nth-of-type(1) { transform: translateY(8px) rotate(45deg); }
+    #menu-btn.is-open span[aria-hidden]:nth-of-type(2) { opacity: 0; }
+    #menu-btn.is-open span[aria-hidden]:nth-of-type(3) { transform: translateY(-8px) rotate(-45deg); }
     a:focus-visible, button:focus-visible, summary:focus-visible {
       outline: 2px solid #23508A; outline-offset: 3px; border-radius: 2px;
     }
@@ -97,10 +104,10 @@
 
       <button id="menu-btn" type="button" aria-expanded="false" aria-controls="menu"
               class="flex flex-col gap-1.5 p-1.5 sm:hidden">
-        <span class="sr-only">Open menu</span>
-        <span class="block h-0.5 w-6 bg-ink"></span>
-        <span class="block h-0.5 w-6 bg-ink"></span>
-        <span class="block h-0.5 w-6 bg-ink"></span>
+        <span class="sr-only">Menu</span>
+        <span aria-hidden="true" class="block h-0.5 w-6 bg-ink"></span>
+        <span aria-hidden="true" class="block h-0.5 w-6 bg-ink"></span>
+        <span aria-hidden="true" class="block h-0.5 w-6 bg-ink"></span>
       </button>
     </div>
 
@@ -122,9 +129,9 @@
 
     <!-- ===== Hero ===== -->
     <section id="top" class="py-12 sm:py-16">
-      <div class="grid gap-8 sm:grid-cols-[220px_1fr] sm:items-start">
+      <div class="grid gap-8 sm:grid-cols-[260px_1fr] sm:items-start">
         <img src="assets/profile.jpg" alt=""
-             class="w-48 sm:w-full aspect-[3/4] rounded-xl object-cover ring-1 ring-rule justify-self-center sm:justify-self-start" />
+             class="w-56 sm:w-full aspect-[3/4] rounded-xl object-cover object-[center_25%] ring-1 ring-rule justify-self-center sm:justify-self-start" />
         <div>
           <h1 class="font-display text-4xl font-semibold tracking-tight">Jooho Kim</h1>
           <p class="mt-1.5 text-sm text-muted">
@@ -313,31 +320,31 @@
       <p class="eyebrow text-muted">Teaching</p>
       <h2 class="mt-2 font-display text-2xl font-semibold tracking-tight">Teaching</h2>
 
-      <p class="mt-5 text-sm text-muted">Teaching assistant, University of Minnesota-Twin Cities</p>
+      <p class="subhead mt-6 text-ink">Teaching assistant, University of Minnesota-Twin Cities</p>
       <ul class="mt-4 space-y-4">
         <li>
           <p class="text-[15px] leading-6">Introduction to Probability and Statistics (STAT 3021)</p>
-          <p class="text-sm text-muted">Fall 2026</p>
+          <p class="text-[13px] text-muted">Fall 2026</p>
         </li>
       </ul>
 
-      <p class="mt-8 text-sm text-muted">Teaching assistant, Seoul National University</p>
+      <p class="subhead mt-9 text-ink">Teaching assistant, Seoul National University</p>
       <ul class="mt-4 space-y-4">
         <li>
           <p class="text-[15px] leading-6">Survival Data Analysis and Lab (326.412)</p>
-          <p class="text-sm text-muted">Fall 2025</p>
+          <p class="text-[13px] text-muted">Fall 2025</p>
         </li>
         <li>
           <p class="text-[15px] leading-6">Selected Topics Seminar (991.101 006)</p>
-          <p class="text-sm text-muted">Spring 2025</p>
+          <p class="text-[13px] text-muted">Spring 2025</p>
         </li>
         <li>
           <p class="text-[15px] leading-6">Mathematical Statistics 2 (M1399.000900)</p>
-          <p class="text-sm text-muted">Fall 2024</p>
+          <p class="text-[13px] text-muted">Fall 2024</p>
         </li>
         <li>
           <p class="text-[15px] leading-6">Statistics Lab (033.020 002)</p>
-          <p class="text-sm text-muted">Spring 2024</p>
+          <p class="text-[13px] text-muted">Spring 2024</p>
         </li>
       </ul>
     </section>
@@ -356,17 +363,26 @@
       var btn = document.getElementById('menu-btn');
       var menu = document.getElementById('menu');
 
+      var isOpen = false;
+
       function setOpen(open) {
+        isOpen = open;
         menu.hidden = !open;
         btn.setAttribute('aria-expanded', String(open));
+        btn.classList.toggle('is-open', open);
       }
-      btn.addEventListener('click', function (e) { e.stopPropagation(); setOpen(menu.hidden); });
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        setOpen(!isOpen);
+      });
       menu.addEventListener('click', function (e) {
         if (e.target.closest('a')) setOpen(false);
       });
       document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && !menu.hidden) { setOpen(false); btn.focus(); }
+        if (e.key === 'Escape' && isOpen) { setOpen(false); btn.focus(); }
       });
+      setOpen(false);
 
       /* ---- Email: edit these two parts only ---- */
       var localPart = 'kim02906';   // <- your UMN username
